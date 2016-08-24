@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html ng-app="phonecatApp">
+<head>
+    <title></title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <link href="app.css" rel="stylesheet" />
+    <script src="/js/angular.js"></script>
+</head>
+
+<body ng-controller="PhoneListCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <!--Sidebar content-->
+                Search: <input ng-model="query">
+                Sort by:
+                <select ng-model="orderProp">
+                    <option value="name">Alphabetical</option>
+                    <option value="age">Newest</option>
+                </select>
+            </div>
+            <div class="col-md-10">
+                <!--Body content-->
+                <ul class="phones">
+                    <li ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="thumbnail">
+                        <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}"></a>
+                        <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+                        <p>{{phone.snippet}}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--<script src="controllers.js"></script>-->
+    <script>
+        //1定义模块（module）
+        var phonecatApp = angular.module('phonecatApp', []);
+        //2.定义控制器
+        phonecatApp.controller('PhoneListCtrl', function ($scope, $http) {
+            $http.get("phones.json").success(function (data) {
+                $scope.phones = data;
+            })
+            $scope.orderProp = 'age';
+        });
+    </script>
+</body>
+</html>

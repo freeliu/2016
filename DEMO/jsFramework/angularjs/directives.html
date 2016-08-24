@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常见指令</title>
+    <script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.js"></script>
+</head>
+<body ng-app="">
+    1.重复
+   <ul>
+       <li ng-repeat="item in items"></li>
+   </ul>
+   <div>
+       2.class
+       <p ng-class="{'red':a>2,'green':a<2}"></p>
+       <p ng-class="a>2?'red':'green'"></p>
+   </div>
+
+    3.表单提交
+   <form ng-submit="submit()">
+
+   </form>
+    4.点击事件
+    <button ng-click="item.toggle=true"></button>
+    <button ng-click="fun()"></button>
+    5 ng-if ,ng-show,ng-hide 区别 ng-if dom节点的添加删除,其它隐藏和显示
+    <ul >
+        <li ng-if="a>5">
+
+        </li>
+    </ul>
+   6 ng-src='' ,避免图片报错
+   <img ng-src="item.picurl">
+
+   7 加载其它html模板或svg
+    <ng-include src="'person.html'" ></ng-include>
+    或
+    <div ng-include="'person.html'"></div>
+</body>
+</html>

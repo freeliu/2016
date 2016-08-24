@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <title>模考</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/Swiper/3.3.1/css/swiper.min.css" rel="stylesheet">
+    <link href="css/main.css?v=1" rel="stylesheet">
+    <style>
+        #page-sbj1 .main{
+            padding-left:1.5rem;
+            padding-right: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-color-gray">
+<!-- Static navbar -->
+<header class="container navbar navbar-fixed-top ">
+    <h1>模考</h1>
+    <a class="pull-left" href="my.html">
+        <img src="images/nav_menu@2x.png" width="30">
+    </a>
+    <a id="" href="setCModels.html?from=index.html" class="pull-right " data-bind="text:common().currentCmodel.Name">小车</a>
+</header>
+<nav class="container navbar-fixed-top color-title ">
+    <ul class="row list-unstyled text-center font-md">
+        <li data-bind="click:common().pageSlideTo.bind($data,0),css:{'on':common().currentSbj()==1}" class="col-xs-3">科目一</li>
+        <li data-bind="click:common().pageSlideTo.bind($data,1),css:{'on':common().currentSbj()==2}" class="col-xs-3">科目二</li>
+        <li data-bind="click:common().pageSlideTo.bind($data,2),css:{'on':common().currentSbj()==3}" class="col-xs-3">科目三</li>
+        <li data-bind="click:common().pageSlideTo.bind($data,3),css:{'on':common().currentSbj()==4}" class="col-xs-3">科目四</li>
+    </ul>
+</nav>
+
+<!-- Slider main container -->
+<div id="topSwiper" class="swiper-container m-x-0">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide" id="page-sbj1" data-bind="html:sbj1().isloaded()?sbj1().page():common().pageLoadingImg">
+        </div>
+        <div class="swiper-slide" id="page-sbj2" data-bind="html:sbj2().isloaded()?sbj2().page():common().pageLoadingImg">
+        </div>
+        <div class="swiper-slide" id="page-sbj3" data-bind="html:sbj3().isloaded()?sbj3().page():common().pageLoadingImg">
+        </div>
+        <div class="swiper-slide" id="page-sbj4" data-bind="html:sbj4().isloaded()?sbj4().page():common().pageLoadingImg">
+        </div>
+
+    </div>
+
+</div>
+
+<!--模态框-->
+<div class="modal" id="modal-mk1Tip" >
+    <div class="modal-dialog modal-sm"  style="margin-top: 35vh;top: auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title color-green text-center" >温馨提示</h4>
+            </div>
+            <div class="modal-body row">
+                <div class="col-xs-4 p-x-0 text-right">考试科目：</div>
+                <div class="col-xs-8">科目一理论考试（100题）</div>
+                <div class="col-xs-4 p-x-0 text-right">车型：</div>
+                <div class="col-xs-8" data-bind="text:base().cModel().Name+' ('+base().cModel().Adater+')'">小车</div>
+                <div class="col-xs-4 p-x-0 text-right">考试标准：</div>
+                <div class="col-xs-8">100题、45分钟、每题1分</div>
+                <div class="col-xs-4 p-x-0 text-right">合格标准：</div>
+                <div class="col-xs-8">满分100分、90分合格</div>
+                <div class="col-xs-12 text-center"><a href="examSimulate.html?paperType=5&sbj=1" class="btn-round btn-improtant mt-1 "> 开始考试 </a></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modal-mk4Tip" >
+    <div class="modal-dialog modal-sm"  style="margin-top: 35vh;top: auto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title color-green text-center" >温馨提示</h4>
+            </div>
+            <div class="modal-body row">
+                <div class="col-xs-4 p-x-0 text-right">考试科目：</div>
+                <div class="col-xs-8">科目四理论考试（50题）</div>
+                <div class="col-xs-4 p-x-0 text-right">车型：</div>
+                <div class="col-xs-8" data-bind="text:base().cModel().Name+' ('+base().cModel().Adater+')'">小车</div>
+                <div class="col-xs-4 p-x-0 text-right">考试标准：</div>
+                <div class="col-xs-8">50题、45分钟、每题2分</div>
+                <div class="col-xs-4 p-x-0 text-right">合格标准：</div>
+                <div class="col-xs-8">满分100分、90分合格</div>
+                <div class="col-xs-12 text-center"><a href="examSimulate.html?paperType=5&sbj=4" class="btn-round btn-improtant mt-1 "> 开始考试 </a></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="http://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+<script>//cdn防失效
+window.jQuery || document.write('<script src="js/lib/jquery-2.2.0.min.js"><\/script>');
+</script>
+<script src="http://cdn.bootcss.com/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.min.js"></script>
+<script src="http://cdn.bootcss.com/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script>
+    $("body").modal || document.write('<script src="js/lib/bootstrap-3.3.6.mini.js"><\/script>');
+</script>
+<script src="http://cdn.bootcss.com/knockout/3.4.0/knockout-min.js"></script>
+<script>
+    window.ko || document.write('<script src="js/lib/knockout-3.4.0.min.js"><\/script>');
+</script>
+<script src="http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/mk.js"></script>
+<script>
+    $(function () {
+        ko.applyBindings(new MKViewModel())
+    })
+</script>
+
+</body>
+</html>

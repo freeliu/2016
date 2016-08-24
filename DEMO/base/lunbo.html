@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style>
+        #container {
+            width: 800px;
+            overflow: hidden;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        ol {
+            display: block;
+            overflow: hidden;
+            height: 290px;
+            width: 2400px;
+            margin: 0;
+            padding: 0;
+        }
+
+            ol li {
+                display: block;
+                float: left;
+                width: 800px;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            ol img {
+                max-width: 100%;
+            }
+
+
+
+        #btnLeft, #btnRight {
+            display: block;
+            position: absolute;
+            width: 20px;
+            height: 40px;
+            top: 115px;
+            display: none;
+        }
+
+
+        #btnLeft {
+            left: 20px;
+        }
+
+        #btnRight {
+            right: 20px;
+        }
+
+        ol:hover + #btnLeft {
+            display: block;
+        }
+
+        ol:hover + a + #btnRight {
+            display: block;
+        }
+
+        #btnLeft:hover, #btnRight:hover {
+            display: block;
+        }
+        #dots {
+            position:absolute;bottom:20px;
+            left:40%;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <ol>
+            <li>
+                <a href="#">
+                    <img src="images/1.jpg" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/2.jpg" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="images/3.jpg" />
+                </a>
+            </li>
+        </ol>
+
+        <a id="btnLeft" href="#">
+            <img src="images/left.png" />
+        </a>
+        <a id="btnRight" href="#">
+            <img src="images/right.png" />
+        </a>
+        <div id="dots">
+            <img onclick="controller.resetInetval(1)" src="images/dotOn.png" />
+            <img onclick="controller.resetInetval(2); controller.stopInteval(); controller.startInteval()" src="images/dotOff.png" />
+            <img onclick="controller.resetInetval(3); controller.stopInteval(); controller.startInteval()" src="images/dotOff.png" />
+        </div>
+    </div>
+    
+   
+
+    <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.js"></script>
+    <script>
+        //model
+        var model = { currentImgIndex: 1, fromLeft:true};
+
+
+        //controller
+        var controller = {
+            //初始化
+            init: function () {
+                var self = this;
+                //开始轮播
+                view.carousel(model.fromLeft);
+                this.startInteval();
+
+                //给中间左右移动添加事件
+                $("#btnLeft").click(function () {
+                    $("#dots img.on").prev("img").click();
+                });
+                $("#btnRight").click(function () {
+                    
+                    $("#dots img.on").next("img").click();
+                })
+            },
+            getCurrentImgIndex: function () {
+                return model.currentImgIndex;
+            },
+            setCurrentImgIndex: function (i) {
+               
+                model.currentImgIndex = i;
+            },
+            startInteval: function () {
+                this.interval = setInterval(function () {
+                    view.carousel(model.fromLeft);
+                }, 3000)
+            },
+            stopInteval: function () {
+                if (this.interval) {
+                    clearInterval(this.interval);
+                }
+            },
+            setIsFromLeft: function (b) {
+                model.fromLeft = b;
+            },
+            resetInetval: function (i) {
+                this.stopInteval(); this.setCurrentImgIndex(i); view.carousel(); this.startInteval()
+            }
+
+        }
+        //view
+        var view = {
+            //init: function () {
+            //    this.carousel();
+            //},
+
+            carousel: function (isFromLeft) {
+                var i = controller.getCurrentImgIndex();
+                switch (i) {
+                    case 1:
+                        $("li").css("transition", "all 2s").css("transform", "translateX(0px)")
+                        this.showCurrentDot();
+                        controller.setIsFromLeft(true);
+                        controller.setCurrentImgIndex(2);
+                        console.log(1);
+                        break;
+                    case 2:
+                        $("li").css("transition", "all 2s").css("transform", "translateX(-800px)")
+                        this.showCurrentDot();
+                        if (isFromLeft) {
+                            controller.setCurrentImgIndex(3);
+                        } else {
+                            controller.setCurrentImgIndex(1);
+                        }
+                        
+                        console.log(2);
+                        break;
+                    case 3:
+                        $("li").css("transition", "all 2s").css("transform", "translateX(-1600px)")
+                        this.showCurrentDot();
+                        controller.setIsFromLeft(false);
+                        controller.setCurrentImgIndex(2);
+                        console.log(3); break;
+                    default:
+                }
+                
+            },
+            showCurrentDot: function () {
+                $("#dots img").attr("src", "images/dotOff.png").removeClass("on");
+                $("#dots img").eq(controller.getCurrentImgIndex()-1).attr("src", "images/dotOn.png").addClass("on");
+            }
+
+           
+
+        }
+
+        $(function () {
+           controller.init();
+
+        })
+
+    </script>
+</body>
+</html>

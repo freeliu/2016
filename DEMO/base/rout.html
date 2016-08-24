@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap3.3.5.css" rel="stylesheet">
+    <style>
+        .selected {
+            color: red;
+        }
+    </style>
+</head>
+<body class="container">
+<!-- Folders -->
+
+<div id="main">
+    <ul class="folders">
+
+
+        <li>
+            <a class="" href="#/index">index</a>
+        </li>
+        <li>
+            <a class="" href="#/detail">detail</a>
+        </li>
+        <li>
+            <a class="" href="#/home">home</a>
+        </li>
+    </ul>
+
+</div>
+
+<div id="page-index" class="" style="width: 100vw;height: 90vh;background-color: red">
+    index
+</div>
+
+<div id="page-detail" class="hidden" style="width: 100vw;height: 90vh;background-color: green">
+    index
+</div>
+
+<div id="page-home" class="hidden" style="width: 100vw;height: 90vh;background-color: yellow">
+    index
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/knockout-debug.js"></script>
+<script src="js/sammy.js"></script>
+<script>
+    $(function(){
+        Sammy(function () {
+
+            this.get('#/index', function () {
+                alert("page-index");
+            });
+
+            this.get('#/detail', function () {
+                alert("page-detail");
+
+            });
+            this.get('#/home', function () {
+                alert("page-home");
+            });
+        }).run();
+    })
+
+
+</script>
+</body>
+</html>

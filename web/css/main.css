@@ -1,0 +1,283 @@
+﻿/*todo:颜色规范*/
+
+/*全局 begin*/
+body {
+    font-family: "sans-serif";
+    
+}
+body * {
+    margin: 0;
+    padding: 0;
+
+}
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+a:hover, a:active {
+    text-decoration: none;
+}
+
+.font-md {
+    font-size: 1.5rem;
+}
+.font-lg{
+    font-size: 2rem;
+}
+.font-xl{
+    font-size: 3rem;
+}
+.mt-1{
+    margin-top: 1rem;
+}
+.mt-2{
+    margin-top: 2rem;
+}
+.mt-3{
+    margin-top: 3rem;
+}
+.p-1_4{
+    padding:1.4rem;
+}
+.p-b-1{
+    padding-bottom: 1rem;
+}
+
+.p-y-1{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+.r-0_5{
+    right: 0.5rem;
+}
+.t-0_5{
+    top: 0.5rem;
+}
+
+.border-gray-noleft{
+    border:1px solid #dedede;border-left: none;
+}
+
+/*颜色*/
+.btn-improtant{
+    color: #f8f8f8!important;
+    background-color: #2CB646 !important;
+
+}
+.btn-improtant:hover{
+    background-color: #259a3b !important;
+}
+.btn-disabled{
+    color: #999!important;
+    background-color: #dedede;
+}
+.btn-normal
+{
+    color: #2a2a2a;
+    background-color: #dedede;
+    border-radius: 4px!important;
+}
+.btn-normal:hover,.btn-normal:active
+{
+    background-color: #c0c0c0;
+}
+
+.btn-week
+{
+    color: #ff7e17;
+    background-color: #2CB646;
+    border-radius: 4px!important;
+}
+.btn-week:hover,.btn-week:active
+{
+
+    background-color: #dcdcdc;
+}
+
+.color-orange{
+    color: #ff7e17;
+}
+.color-green{
+    color: #2cb646;
+}
+.bg-color-green
+{
+    background-color: #259a3b;
+}
+.color-gray{
+    color: #999999;
+}
+.color-title{
+    color: #2a2a2a;
+}
+.color-content{
+    color: #434343;
+}
+.color-week-btn
+{
+    color: #676767;
+}
+.bg-color-gray{
+    background-color: #f0f0f0;
+}
+.bg-color-spacing
+{
+    background-color: #f8f8f8;
+}
+.bg-color-white{
+    background-color:white;
+}
+.color-blue{
+    color: #4cadda;
+}
+
+
+
+
+/*全局 end*/
+
+/*头部 begin*/
+header {
+    background-color: #2CB646;
+    border-bottom-color: #2CB646;
+    margin-bottom: 0 !important;
+    height: 5rem;
+}
+
+header > * {
+    height: 5rem;
+    line-height: 5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+}
+
+header h1 {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    text-align: center;
+}
+
+header + nav {
+    padding-top: 5rem;
+}
+
+nav ul li {
+    border-right: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
+    height: 4rem;
+    line-height: 4rem;
+    background-color: white;
+}
+
+nav ul li:last-child {
+    border-right: none;
+}
+
+
+nav ul li.on {
+    border-bottom: 2px solid #2CB646;
+}
+/*头部 end*/
+
+/*中部 begin*/
+.swiper-container {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+@media screen and (orientation:portrait) {
+    .swiper-container {
+        min-height: 10vh;
+    }
+}
+
+@media screen and (orientation:landscape) {
+    .swiper-container {
+        min-height: 20vh;
+    }
+}
+
+.main {
+    margin-top: 9rem;
+    background-color:  #f0f0f0;
+    overflow: hidden !important;
+}
+
+.btnCollections{
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-top:10px;
+    min-height:90.14vw;
+    background:url("../images/mokao/maokao_bg_01.jpg")  no-repeat;
+    background-size: 100%;
+}
+#share{
+    margin-left: 10px;
+    margin-right: 1px;
+    margin-top: 1rem;
+    min-height: 30vw;
+    background:url("../images/mokao/bg_share.jpg")  no-repeat;
+    background-size: 100%;
+}
+.exercise a:not(:last-child)
+{
+    display: block;
+    width: calc(50vw - 1.333333vw - 10px);
+    height: calc((50vw - 1.333333vw - 10px)/1.725);
+
+}
+.exercise a.exercise-exam{
+    display: block;
+    width: 38.4vw;
+    height: 38.4vw;
+    border-radius: 50%;
+    /*background-color: red;*/
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    top:8.6vw;
+    max-width: 449px;
+    max-height: 449px;
+
+}
+@media (min-width: 1200px) {
+    a.exercise-exam{
+        top:108.5px!important;
+    }
+}
+.exercise-random,.exercise-special {
+    margin-top:2.666666vw ;
+}
+
+/*.btnCollections ul*/
+/*{*/
+    /*width: calc(10vw - 20px) ;*/
+    /*height: calc((25vw - 5px) * 1.124 );*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+/*}*/
+.btnCollections li,#share li
+{
+    width: calc(25vw - 5px);
+    height: calc((25vw - 5px) * 1.124 );
+
+    display: block;
+    float: left;
+    margin-top:2.666666vw ;
+}
+.btnCollections li a ,#share li a
+{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/*中部 end*/
+
+

@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    [attribute]	[target]	选择带有 target 属性所有元素。                          	2
+    [attribute=value]	[target=_blank]	选择 target="_blank" 的所有元素。           	2
+    [attribute~=value]	[title~=flower]	选择 title 属性包含单词 "flower" 的所有元素。	2
+    [attribute|=value]	[lang|=en]	选择 lang 属性值以 "en" 开头的所有元素。	        2 该值必须是整个单词，比如 lang="en"，或者后面跟着连字符，比如 lang="en-us"。
+    [attribute^=value]	a[src^="https"]	选择其 src 属性值以 "https" 开头的每个 a元素。	3
+    [attribute$=value]	a[src$=".pdf"]	选择其 src 属性以 ".pdf" 结尾的所有 a元素。	    3
+    [attribute*=value]	a[src*="abc"]	选择其 src 属性中包含 "abc" 子串的每个 a 元素。	3
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /*
+            static	默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）
+            relative	生成相对定位的元素，相对于自身正常位置进行定位。
+            inherit	规定应该从父元素继承 position 属性的值。
+            fixed 相对与浏览器定位
+            absolute 相对于不是static的第一个父元素定位 ,不占位置 
+            */
+       .ex1 { position: relative; left: 20px; }
+       .ex2 { position: absolute; left: -20px; }
+        .div1 { position: relative; }
+    </style>
+</head>
+
+<body>
+    <div style="margin-left:50px; border:1px solid; width:400px; height:400px;">
+        <div style="margin-left: 50px; border: 1px solid; width: 200px; position: relative">
+            <div>Normal Heading</div>
+            <div class="ex1">relative</div>
+            <div class="ex2">absolute1</div>
+            <div class="ex2">absolute2</div>
+        </div>
+    </div>
+</body>
+
+</html>
