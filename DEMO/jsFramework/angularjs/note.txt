@@ -1,4 +1,0 @@
-﻿初始化属性 <div ng-app="" ng-init="quantity=1;cost=5"> ng-init? ajax（不推荐使用）
-属性计算 ng-bind="a+b" 或 {{a+b}}
-
-ng-value 指令用于设置 input 或 select 元素的 value 属性。
