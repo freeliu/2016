@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+         <select data-bind="value:s">
+             <option value="1">1</option>
+             <option value="2">2</option>
+             <option value="3">3</option>
+         </select>
+        <script src="js/lib/knockout-debug.js"></script>
+<script>
+    var VM=function () {
+        this.s=ko.observable(0);
+        window.vm=this;
+    }
+    ko.applyBindings(new VM());
+
+</script>
+</body>
+</html>
