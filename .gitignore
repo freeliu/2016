@@ -1,2 +1,7 @@
 .gitingore
 ./idea
+.idea/
+aminate/.idea/
+base/.idea/
+test/.idea/
+
