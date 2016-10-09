@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue起步</title>
+</head>
+<body>
+
+<script>
+    //1.启动，bootstrapped
+    var vm = new Vue({
+        // options
+    })
+    //2.not strictly associated with the MVVM pattern, Vue’s design was no doubt inspired by it
+    //3.vm 创建后再添加新的属性，不会触发视图更新
+    vm.b = "";
+    //4.
+    vm.$data === data // -> true
+    vm.$el === document.getElementById('example') // -> true
+    // $watch is an instance method
+    vm.$watch('a', function (newVal, oldVal) {
+        // this callback will be called when `vm.a` changes
+    })
+    //5 生命周期钩子
+    var vm = new Vue({
+        data: {
+            a: 1
+        },
+        //the created hook is called after the instance is created,应用，el加hidden，created之后去掉，避免页面显示{{}}
+        created: function () {
+            // `this` points to the vm instance
+            console.log('a is: ' + this.a);
+        }
+    })
+    // -> "a is: 1"
+    // 6视图只更新一次 v-once
+    //  <span v-once>This will never change: {{ msg }}</span>
+    // 7.输出文本{{}}，输出html<div v-html="rawHtml"></div>
+
+    // 8.特性 Mustaches cannot be used inside HTML attributes, instead use a v-bind directive:
+    /* <div v-bind:id="dynamicId"></div>
+     <button v-bind:disabled="someDynamicCondition">Button</button>*/
+
+    // 9使用js表达式
+    {
+        {
+            number + 1
+        }
+    }
+    {
+        {
+            ok ? 'YES' : 'NO'
+        }
+    }
+    {
+        {
+            message.split('').reverse().join('')
+        }
+    }
+    //    <div v-bind:id="'list-' + id"></div>
+
+    //10 Filters(过滤器、格式化器)
+    {
+        {
+            message | capitalize
+        }
+    }
+    {
+        {
+            message | filterA | filterB
+        }
+    }
+    {
+        {
+            message | filterA('arg1', arg2)
+        }
+    }
+
+    new Vue({
+        // ...
+        filters: {
+            capitalize: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.charAt(0).toUpperCase() + value.slice(1)
+            },
+            filterA: function (value, arg1, arg2) {
+
+            }
+        }
+    })
+
+    //11 指令
+    //    <p v-if="seen">Now you see me</p>
+    //12 参数  Arguments
+    //    <a v-on:click="doSomething">
+    //13 Modifiers
+    //    <form v-on:submit.prevent="onSubmit"></form> event.preventDefault()
+    //14 缩写
+    /*    <a v-bind:href="url"></a>
+     /*    <a :href="url"></a>*!/
+     <a v-on:click="doSomething"></a>
+     <a @click="doSomething"></a>*/
+
+    //15 计算属性
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            message: 'Hello'
+        },
+        computed: {
+            // a computed getter
+            reversedMessage: function () {
+                // `this` points to the vm instance
+                return this.message.split('').reverse().join('')
+            }
+        }
+    })
+    //    计算属性vs方法，
+    //计算属性在依赖项改变时才会改变，
+    //    computed: {
+    //        now: function () {
+    //            return Date.now()
+    //        }
+    //    }
+    //    所有每次调用now都是同一个结果
+
+    //    计算属性vs 监控属性
+    var vm = new Vue({
+        el: '#demo',
+        data: {
+            firstName: 'Foo',
+            lastName: 'Bar',
+            fullName: 'Foo Bar'
+        },
+        watch: {
+            firstName: function (val) {
+                this.fullName = val + ' ' + this.lastName
+            },
+            lastName: function (val) {
+                this.fullName = this.firstName + ' ' + val
+            }
+        }
+    })
+    var vm = new Vue({
+        el: '#demo',
+        data: {
+            firstName: 'Foo',
+            lastName: 'Bar'
+        },
+        computed: {
+            fullName: function () {
+                return this.firstName + ' ' + this.lastName
+            }
+        }
+    })
+    //    计算属性更简洁
+
+    //16 class 绑定 ，缺点：不支持去掉已存在class 如<div class="hidden" :class={hidden:1>2}></div>
+    /* <div>   v-bind:class="{ active: isActive }"></div>
+     <div class="static"
+     <div>  v-bind:class="{ active: isActive, 'text-danger': hasError }">
+     </div>
+     <div v-bind:class="classObject"></div>
+     data: {
+     classObject: {
+     active: true,
+     'text-danger': false
+     }
+     }*/
+
+    // toogle           <div v-bind:class="[isActive ? activeClass : '', errorClass]">
+
+    //17 style绑定，vue 会自动加前缀            <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+
+    //18条件渲染
+    //          <h1 v-if="ok">Yes</h1>
+    //            <h1 v-else>No</h1>
+    /*  Template v-if
+     <template v-if="ok">
+     <h1>Title</h1>
+     <p>Paragraph 1</p>
+     <p>Paragraph 2</p>
+     </template>*/
+    //好处：   不会生成多余的 template标签
+
+    //    19 <div v-for="(value, key) in object">
+    //            {{ key }} : {{ value }}
+    //    </div>
+
+    /*      <div v-for="(value, key, index) in object">
+     {{ index }}. {{ key }} : {{ value }}
+     </div>*/
+    //            <span v-for="n in 10">{{ n }}</span>
+    //    列表有唯一标识符，建议加上，提高速度和准确性
+    //            <div v-for="item in items" :key="item.id">
+    //
+    //            </div>
+
+    //20数据变动监测，下列函数可以出发view更新
+    /*push()
+     pop()
+     shift()
+     unshift()
+     splice()
+     sort()
+     reverse()*/
+
+    //下面不能触发视图更新
+    //    When you directly set an item with the index, e.g. vm.items[indexOfItem] = newValue
+    //    When you modify the length of the array, e.g. vm.items.length = newLength
+    //  1.用  Vue.set(example1.items, indexOfItem, newValue) 解决
+    //  2.用 splice替代
+
+    //    21 事件处理
+    // a直接写js  <button v-on:click="counter += 1">Add 1</button>
+    // b直接写函数名 <button v-on:click="greet">Greet</button>
+    // c 带参数  <button v-on:click="say('hi')">Say hi</button>
+    //d 把当前事件也传到方法中去<button v-on:click="warn('Form cannot be submitted yet.', $event)">Submit</button>
+    if (event) event.preventDefault()
+
+    //    事件修改
+    // a 即阻止冒泡   the click event's propagation will be stopped
+    //  <a v-on:click.stop="doThis"></a>
+    /* b 阻止默认事件 <!-- the submit event will no longer reload the page -->
+     <form v-on:submit.prevent="onSubmit"></form>*/
+    //  c 同时阻止冒泡和默认事件
+    <!-- modifiers can be chained -->
+    //    <a v-on:click.stop.prevent="doThat">
+    //
+    <!-- use capture mode when adding the event listener -->
+    // d   <div v-on:click.capture="doThis">...</div>
+    //
+    <!-- only trigger handler if event.target is the element itself -->
+    //  e
+    <!-- i.e. not from a child element -->
+    //    <div v-on:click.self="doThat">...</div>
+    //    绑定键盘
+    <!-- only call vm.submit() when the keyCode is 13 -->
+    //    <input v-on:keyup.13="submit">
+    <!-- same as above -->
+    //    <input v-on:keyup.enter="submit">
+    //
+    <!-- also works for shorthand -->
+    //            <input @keyup.enter="submit">
+    //    enter
+    //    tab
+    //    delete (captures both “Delete” and “Backspace” keys)
+    //    esc
+    //    space
+    //    up
+    //    down
+    //    left
+    //    right
+
+    //    22表单绑定
+    /*       a input  <input v-model="message" placeholder="edit me">
+     <p>Message is: {{ message }}</p>*/
+    //    b 勾选框 boolean value
+    /*    <input type="checkbox" id="checkbox" v-model="checked">
+     <label for="checkbox">{{ checked }}</label>*/
+    //    c多选框
+    //    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    //            <label for="jack">Jack</label>
+    //            <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    //            <label for="john">John</label>
+    //            <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    //            <label for="mike">Mike</label>
+
+    new Vue({
+        el: '...',
+        data: {
+            checkedNames: []
+        }
+    })
+
+    //    d 单选框
+    //    <input type="radio" id="one" value="One" v-model="picked">
+    //            <label for="one">One</label>
+    //            <br>
+    //            <input type="radio" id="two" value="Two" v-model="picked">
+    //            <label for="two">Two</label>
+    //            <br>
+    //            <span>Picked: {{ picked }}</span>
+
+//     e select ？
+/*    <select v-model="selected">
+            <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+    </option>
+    </select>
+    <span>Selected: {{ selected }}</span>*/
+    /*  <!-- `picked` is a string "a" when checked -->
+     <input type="radio" v-model="picked" value="a">
+     <!-- `toggle` is either true or false -->
+     <input type="checkbox" v-model="toggle">
+     <!-- `selected` is a string "abc" when selected -->
+     <select v-model="selected">
+     <option value="abc">ABC</option>
+     </select>*/
+
+
+   /* <input
+    type="checkbox"
+    v-model="toggle"
+    v-bind:true-value="a"
+    v-bind:false-value="b">*/
+
+   /* // when checked:
+    vm.toggle === vm.a
+    // when unchecked:
+    vm.toggle === vm.b*/
+
+/*    <input type="radio" v-model="pick" v-bind:value="a">
+     when checked:
+    vm.pick === vm.a*/
+
+   /* <select v-model="selected">
+            <!-- inline object literal -->
+            <option v-bind:value="{ number: 123 }">123</option>
+            </select>
+            // when selected:
+            typeof vm.selected // -> 'object'
+    vm.selected.number // -> 123*/
+
+//    有用的属性
+//    <!-- synced after "change" instead of "input" -->
+//    <input v-model.lazy="msg" >
+//    格式化成数字，不用另外转换
+//    <input v-model.number="   age" type="number">
+    //自动去首尾空格
+//    <input v-model.trim="msg">
+</script>
+</body>
+</html>

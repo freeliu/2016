@@ -2,15 +2,100 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <title>vue 组件</title>
 </head>
 <body>
-<div id="app">
-    <app-nav></app-nav>
-    <app-view>
-        <app-sidebar></app-sidebar>
-        <app-content></app-content>
-    </app-view>
+<div>
+    <h2>组件好处</h2>
+    <ul>
+        <li>可在多页面中使用</li>
+    </ul>
 </div>
+<div id="app">
+    <v-farther></v-farther>
+</div>
+<script src="./js/vue-2.0.1.js"></script>
+<script>
+    /* 1 register 全局注册组件
+     Vue.component('my-component', {
+     template: '<div>A custom component!</div>'
+     })
+     // create a root instance
+     new Vue({
+     el: '#app',
+     data: {},
+     methods: {}
+     });*/
+    /*   2 Local Registration
+     var Child = {
+     template: '<div>A custom component!</div>'
+     }
+     new Vue({
+     el: '#app',
+     components: {
+     // <my-component> will only be available in parent's template
+     'my-component': Child
+     }
+     })*/
+
+    /*  3 is 标签指定组件，（由于某些标签下只能使用某些标签，不能使用自定义标签）
+     下面三个除外，Therefore, prefer using string templates whenever possible.
+     <script type="text/x-template">
+     JavaScript inline template strings
+     .vue components
+
+     <table>
+     <my-row>...</my-row>
+     </table>
+
+     <table>
+     <tr is="my-row"></tr>
+     </table>
+     */
+
+    //    4 data Must Be a Function component
+    /* Vue.component('simple-counter', {
+     template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+     // data is technically a function, so Vue won't
+     // complain, but we return the same object
+     // reference for each component instance
+     data: function () {
+     return {
+     counter: 0
+     }
+     }
+     })
+     new Vue({
+     el: '#example-2'
+     })*/
+
+    //    子组件通过  props:["age"],接收父组件传过来的参数
+    Vue.component('v-child', {
+        props: ["age"],
+        template: "<div>this is children{{age}}</div>"
+    })
+    Vue.component('v-farther', {
+        data: function () {
+            return {age: 55}
+        },
+        template: "<div>" +
+        "<h2>this is father{{age}}</h2>" +
+        "<v-child age='12'></v-child>" +
+        "</div>"
+    })
+    new Vue({
+        el: "#app"
+
+    })
+    //自组件绑定动态属性
+    //    <child :my-message="parentMsg"></child>
+
+    /*  <!-- this passes down a plain string "1" -->
+     <comp some-prop="1"></comp>
+     <!-- this passes down an actual number -->
+     <comp v-bind:some-prop="1"></comp>*/
+
+</script>
 </body>
 </html>
