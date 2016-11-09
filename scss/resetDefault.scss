@@ -1,0 +1,36 @@
+html * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: San_Francisco, sans-serif;
+}
+//关键分辨率320 360 375 412 414，// 设计图用750，已375使用1rem=20px为基准，其它分辨率屏幕根据比例缩放
+//320
+@media only screen and (max-width: 359px) {
+  html {
+    font-size: 17.666666px;
+  }
+}
+//360
+@media only screen and (min-width: 321px) and (max-width: 374px) {
+  html {
+    font-size: 19.2px;
+  }
+}
+@media only screen and (min-width: 361px) and (max-width: 411px) {
+  html {
+    font-size: 20px;
+  }
+}
+//412
+@media only screen and (min-width: 376px) and (max-width: 413px) {
+  html {
+    font-size: 21.973333px;
+  }
+}
+//414
+@media only screen and (min-width: 414px)  {
+  html {
+    font-size: 22.8px;
+  }
+}

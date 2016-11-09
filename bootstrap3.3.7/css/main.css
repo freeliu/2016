@@ -1,0 +1,217 @@
+html * {
+    margin: 0;
+    padding: 0;
+}
+.absolute {
+    position: absolute;
+}
+.relative {
+    position: relative;
+}
+.ml-20 {
+    margin-left: 20px;
+}
+
+.bg-gray {
+    background-color: #EFF4F7;
+}
+
+.bg-white {
+    background-color: white;
+}
+.p-x-0 {
+    padding-left: 0;
+    padding-right: 0;
+}
+.ml-10{
+    margin-left: 10px;
+}
+.mt-5{
+    margin-top: 5px;
+}
+.mt-10 {
+    margin-top: 10px;
+}
+.mt-20 {
+    margin-top: 20px;
+}
+
+.r-0 {
+    right: 0;
+}
+
+/*        业务*/
+/*        页面分两大块 sidebar（左边） 和 main(右边) {head content}*/
+/*        sidebar begin*/
+
+.sidebar {
+    width: 11.9%;
+    min-height: 100%;
+    float: left;
+    background-color: #252C3A;
+}
+
+.main {
+    width: 88.1%;
+    float: right;
+}
+
+.head {
+    height: 80px;
+    line-height: 80px;
+    padding-right: 2.61%;
+}
+
+.content {
+    /* padding-top: 20px;
+     padding-left: 1.5625%;
+     padding-right: 1.5625%;*/
+
+    padding-top: 10px;
+    padding-left: 0.75%;
+    padding-right: 0.75%;
+    height: calc(100% - 80px);
+    overflow: scroll;
+
+}
+
+h1 {
+    height: 80px;
+    line-height: 80px
+}
+
+.menu {
+
+}
+
+.menu-item {
+    font-size: 16px;
+    height: 60px;
+    line-height: 60px;
+}
+
+.menu-item:not(.on) .glyphicon {
+    display: none;
+}
+
+.menu-item .glyphicon {
+    position: absolute;
+    right: -3px;
+    top: 21px
+}
+
+.menu-item.on {
+    border-left: 4px solid #46c0ff;
+}
+
+.filter-wrap {
+    height: 90px;
+    line-height: 90px;
+    border-radius: 6px;
+}
+
+.filter-wrap select {
+    width: 17%;
+    height: 48px;
+    border-color: #e7e7e7;
+    border-radius: 6px;
+    margin-left: 1.8%;
+    padding-left: 1.8%;
+    color: #999999;
+    font-size: 16px;
+}
+
+.filter-wrap div.search-wrap {
+    display: inline-block;
+    width: 31.2%;
+    height: 48px;
+    margin-left: 1.8%;
+    line-height: 48px;
+    border: 1px solid #e7e7e7;
+    border-radius: 6px;
+    position: relative;
+}
+
+.filter-wrap input {
+    height: inherit;
+    border: none;
+    background: none;
+    width: 100%;
+    padding-left: 75px;
+}
+
+.filter-wrap button {
+    margin-left: 1.8%;
+    width: 7.2%;
+    height: 48px;
+    margin-left: 1%;
+    line-height: 48px;
+    border: none;
+    border-radius: 6px;
+    background-color: #46c0ff;
+    color: white;
+}
+
+.filter-wrap .glyphicon-search {
+    font-size: 22px;
+    position: absolute;
+    top: 12px;
+    left: 30px
+}
+
+.table-bordered {
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.table-bordered table {
+    margin-bottom: 0;
+}
+
+th {
+    text-align: center;
+}
+
+table {
+    font-size: 12px;
+    vertical-align: middle;
+}
+td{
+    vertical-align: middle!important;
+}
+tbody tr:hover{
+    background-color: #46c0ff!important;
+    color: white;
+}
+.blur-radius-wrap{
+    display: inline-block;
+    background-color: #46c0ff;
+    border-radius: 4px;
+    border:none;
+    padding:2px 6px;
+    color: white;
+}
+
+.modal-content {
+    border: 1px solid #999;
+    overflow: hidden;
+}
+
+.show {
+    display: block !important;
+}
+[id^=modal-order] li{
+    padding-left: 25px;
+}
+[id^=modal-order] li:not(:last-child)
+{
+    padding-bottom: 10px;
+    /*border-bottom: 1px solid #dedede;*/
+}
+.modal input{
+    border: 1px solid #dedede;
+    border-radius: 4px;
+}
+#modal-orderEdit {
+
+}

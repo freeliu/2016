@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>
+        1.安装：
+        <p>$ npm install webpack -g</p>
+    </li>
+    <li>
+        2.编译
+        <p>$ webpack ./entry.js bundle.js</p>
+    </li>
+    <li>
+        3.引用其它文件
+        <p>
+            require("./content.js")
+        </p>
+
+        <!--module.exports = "It works from content.js.";-->
+    </li>
+    <li>
+        4.处理 css文件<br>
+        webpack can only handle JavaScript natively
+        <p>
+            npm install css-loader style-loader
+        </p>
+        - require("!style!css!./style.css");
+        + require("./style.css");
+        webpack ./entry.js bundle.js --module-bind "css=style!css"
+    </li>
+    <li>
+        5.配置文件
+        <p>add webpack.config.js</p>
+        <code>
+            module.exports = {
+            entry: "./entry.js",
+            output: {
+            path: __dirname,
+            filename: "bundle.js"
+            },
+            module: {
+            loaders: [
+            { test: /\.css$/, loader: "style!css" }
+            ]
+            }
+            };
+        </code>
+        写了配置文件后，只需要运行 webpack
+        显示编译进度
+        webpack --progress --colors
+    </li>
+    <li>
+       6.代码修改后自动编译
+        webpack --watch
+    </li>
+    <li>
+        7.部署服务器
+
+    </li>
+
+</ul>
+</body>
+</html>

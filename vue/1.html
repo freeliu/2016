@@ -9,7 +9,29 @@
 <script>
     //1.启动，bootstrapped
     var vm = new Vue({
-        // options
+        el: "#app",
+        data: {},
+        methods: {},
+        filters: {
+            capitalize: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.charAt(0).toUpperCase() + value.slice(1)
+            },
+            filterA: function (value, arg1, arg2) {
+
+            }
+        },
+        watch: {
+            a: function (val, oldVal) {
+                console.log('new: %s, old: %s', val, oldVal)
+            }
+        },
+        computed: {
+            fullName: function () {
+                return this.firstName + ' ' + this.lastName
+            }
+        }
     })
     //2.not strictly associated with the MVVM pattern, Vue’s design was no doubt inspired by it
     //3.vm 创建后再添加新的属性，不会触发视图更新
@@ -26,7 +48,7 @@
         data: {
             a: 1
         },
-        //the created hook is called after the instance is created,应用，el加hidden，created之后去掉，避免页面显示{{}}
+        //the created hook is called after the instance is created,应用
         created: function () {
             // `this` points to the vm instance
             console.log('a is: ' + this.a);
@@ -283,13 +305,13 @@
     //            <br>
     //            <span>Picked: {{ picked }}</span>
 
-//     e select ？
-/*    <select v-model="selected">
-            <option v-for="option in options" v-bind:value="option.value">
-            {{ option.text }}
-    </option>
-    </select>
-    <span>Selected: {{ selected }}</span>*/
+    //     e select ？
+    /*    <select v-model="selected">
+     <option v-for="option in options" v-bind:value="option.value">
+     {{ option.text }}
+     </option>
+     </select>
+     <span>Selected: {{ selected }}</span>*/
     /*  <!-- `picked` is a string "a" when checked -->
      <input type="radio" v-model="picked" value="a">
      <!-- `toggle` is either true or false -->
@@ -300,36 +322,37 @@
      </select>*/
 
 
-   /* <input
-    type="checkbox"
-    v-model="toggle"
-    v-bind:true-value="a"
-    v-bind:false-value="b">*/
+    /* <input
+     type="checkbox"
+     v-model="toggle"
+     v-bind:true-value="a"
+     v-bind:false-value="b">*/
 
-   /* // when checked:
-    vm.toggle === vm.a
-    // when unchecked:
-    vm.toggle === vm.b*/
+    /* // when checked:
+     vm.toggle === vm.a
+     // when unchecked:
+     vm.toggle === vm.b*/
 
-/*    <input type="radio" v-model="pick" v-bind:value="a">
+    /*    <input type="radio" v-model="pick" v-bind:value="a">
      when checked:
-    vm.pick === vm.a*/
+     vm.pick === vm.a*/
 
-   /* <select v-model="selected">
-            <!-- inline object literal -->
-            <option v-bind:value="{ number: 123 }">123</option>
-            </select>
-            // when selected:
-            typeof vm.selected // -> 'object'
-    vm.selected.number // -> 123*/
+    /* <select v-model="selected">
+     <!-- inline object literal -->
+     <option v-bind:value="{ number: 123 }">123</option>
+     </select>
+     // when selected:
+     typeof vm.selected // -> 'object'
+     vm.selected.number // -> 123*/
 
-//    有用的属性
-//    <!-- synced after "change" instead of "input" -->
-//    <input v-model.lazy="msg" >
-//    格式化成数字，不用另外转换
-//    <input v-model.number="   age" type="number">
+    //    有用的属性
+    //
+    <!-- synced after "change" instead of "input" -->
+    //    <input v-model.lazy="msg" >
+    //    格式化成数字，不用另外转换
+    //    <input v-model.number="   age" type="number">
     //自动去首尾空格
-//    <input v-model.trim="msg">
+    //    <input v-model.trim="msg">
 </script>
 </body>
 </html>
