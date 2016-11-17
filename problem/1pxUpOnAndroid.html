@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width;initial-scale=5;">
+    <title>Android 1px 偏离问题</title>
+    <style>
+
+        html *
+        {
+            box-sizing: border-box;
+        }
+        body{
+            margin:0;
+            padding: 0;
+        }
+        .text-center
+        {
+            text-align: center;
+        }
+        .mt-10{
+            margin-top:10px;
+        }
+        .mt-50{
+            margin-top: 50px;
+        }
+        .bg-green{
+            background-color: green;
+        }
+        div {
+            margin-left:auto;
+            margin-right:auto;
+            width: 16px;
+            height: 16px;
+            font-size: 16px;
+            line-height: 16px;
+        }
+    </style>
+</head>
+<body>
+     结论：html lang=zh-cn可解决
+     <div class="mt-50 bg-green ">中</div>
+     <div class="mt-10 bg-green">英</div>
+</body>
+</html>
